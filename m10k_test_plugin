@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd SDL2*
+cd test
+export SDL_CONFIG=/tmp/sdlbuild/bin/sdl2-config
+make clean
+./configure
+make -j8
+./testver
+

@@ -1,0 +1,21 @@
+#!/bin/bash
+#m10k_build_plugin test file
+
+# Unpack source
+tar xf SDL2*t*z
+
+# Goes into project directorry
+cd SDL2*
+rm -R /tmp/sdlbuild
+
+# Read configuration to be tested
+read PERMUTATION
+
+# Set FLAGS to the options from permutation
+export CFLAGS="$PERMUTATION"
+./configure --prefix=/tmp/sdlbuild || exit $?
+
+make -j8 > /dev/null
+
+make install > /dev/null
+
